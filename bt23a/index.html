@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bài tập 23a - Game kiểm tra tốc độ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Game kiểm tra tốc độ</h1>
+
+    <div class="toolbar">
+      <label for="timeSelect">Thời gian:</label>
+      <select id="timeSelect">
+        <option value="10">10 giây</option>
+        <option value="20">20 giây</option>
+        <option value="30" selected>30 giây</option>
+        <option value="60">60 giây</option>
+      </select>
+      <button id="startBtn">Bắt đầu</button>
+      <button id="colorBtn">Đổi màu nền</button>
+      <button id="playerBtn">Người chơi</button>
+    </div>
+
+    <p id="playerInfo" class="player-info"></p>
+
+    <div class="stats">
+      <span>Thời gian còn lại: <b id="timeLeft">0</b>s</span>
+      <span>Điểm: <b id="score">0</b></span>
+      <span>Phản xạ: <b id="reaction">-</b></span>
+    </div>
+
+    <div id="gameArea">
+      <div id="target"></div>
+      <div id="result" class="hidden">
+        <h2>Hết giờ!</h2>
+        <p>Tổng điểm của bạn: <b id="finalScore">0</b></p>
+        <button id="replayBtn">Chơi lại</button>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

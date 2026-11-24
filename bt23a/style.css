@@ -1,0 +1,96 @@
+/* Đặt lại lề và tính kích thước theo border-box cho mọi phần tử */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Định dạng toàn trang */
+body {
+  font-family: Arial, sans-serif;          /* Chọn phông chữ Arial */
+  background-color: #cfe8ff;               /* Màu nền ban đầu (JS sẽ đổi ngẫu nhiên) */
+  min-height: 100vh;                       /* Chiều cao tối thiểu bằng chiều cao màn hình */
+  display: flex;                           /* Dùng flexbox để căn giữa */
+  justify-content: center;                 /* Căn giữa theo chiều ngang */
+  padding: 20px;                           /* Khoảng cách từ mép trang đến nội dung */
+  transition: background-color 0.4s;       /* Đổi màu nền mượt trong 0.4 giây */
+}
+
+/* Khung chứa toàn bộ trò chơi */
+.container {
+  width: 100%;                             /* Chiếm toàn bộ chiều rộng có thể */
+  max-width: 700px;                        /* Nhưng không rộng quá 700px */
+  text-align: center;                      /* Căn giữa chữ */
+}
+
+/* Tiêu đề */
+h1 { margin-bottom: 15px; color: #222; }   /* Cách phần dưới 15px, chữ màu xám đậm */
+
+/* Thanh công cụ chứa select và các nút */
+.toolbar {
+  display: flex;                           /* Xếp các phần tử trên một hàng */
+  flex-wrap: wrap;                         /* Cho phép xuống dòng khi màn hình hẹp */
+  gap: 10px;                               /* Khoảng cách giữa các phần tử */
+  justify-content: center;                 /* Căn giữa các phần tử */
+  align-items: center;                     /* Căn giữa theo chiều dọc */
+  margin-bottom: 12px;                     /* Cách phần dưới 12px */
+}
+
+/* Định dạng nút bấm và ô chọn thời gian */
+button, select {
+  padding: 8px 14px;                       /* Khoảng đệm bên trong */
+  font-size: 16px;                         /* Cỡ chữ 16px */
+  border: none;                            /* Bỏ viền mặc định */
+  border-radius: 6px;                      /* Bo góc 6px */
+  cursor: pointer;                         /* Con trỏ hình bàn tay khi rê chuột */
+}
+button { background: #1976d2; color: #fff; }        /* Nút: nền xanh, chữ trắng */
+button:hover:not(:disabled) { background: #0d47a1; } /* Rê chuột vào nút (đang bật) thì xanh đậm hơn */
+button:disabled { background: #999; cursor: not-allowed; } /* Nút bị khóa: màu xám, con trỏ cấm */
+select:disabled { opacity: 0.6; cursor: not-allowed; }     /* Ô chọn bị khóa: mờ đi */
+
+/* Dòng hiển thị thông tin người chơi */
+.player-info { min-height: 24px; margin-bottom: 8px; font-weight: bold; color: #b71c1c; }
+
+/* Thanh thống kê: thời gian, điểm, phản xạ */
+.stats {
+  display: flex;                           /* Xếp trên một hàng */
+  justify-content: space-around;           /* Chia đều khoảng cách */
+  flex-wrap: wrap;                         /* Cho phép xuống dòng */
+  margin-bottom: 12px;                     /* Cách phần dưới 12px */
+  font-size: 18px;                         /* Cỡ chữ 18px */
+}
+
+/* Khu vực chơi game */
+#gameArea {
+  position: relative;                      /* Làm mốc định vị cho mục tiêu và bảng kết quả */
+  width: 100%;                             /* Rộng bằng khung chứa */
+  height: 400px;                           /* Cao 400px */
+  background: rgba(255, 255, 255, 0.7);    /* Nền trắng hơi trong suốt */
+  border: 3px solid #333;                  /* Viền đậm 3px */
+  border-radius: 10px;                     /* Bo góc 10px */
+  overflow: hidden;                        /* Ẩn phần nằm ngoài khu vực */
+}
+
+/* Mục tiêu cần click */
+#target {
+  position: absolute;                      /* Định vị tự do trong khu vực chơi */
+  width: 60px; height: 60px;               /* Kích thước 60x60px */
+  border-radius: 50%;                      /* Bo tròn thành hình tròn */
+  background: radial-gradient(circle, #ff5252, #b71c1c); /* Nền đỏ chuyển sắc */
+  cursor: pointer;                         /* Con trỏ bàn tay */
+  display: none;                           /* Ẩn mục tiêu khi chưa bắt đầu */
+}
+
+/* Bảng kết quả khi hết giờ */
+#result {
+  position: absolute;                      /* Phủ lên khu vực chơi */
+  inset: 0;                                /* Kéo giãn ra 4 cạnh */
+  background: rgba(0, 0, 0, 0.8);          /* Nền đen trong suốt */
+  color: #fff;                             /* Chữ trắng */
+  display: flex;                           /* Dùng flexbox */
+  flex-direction: column;                  /* Xếp các phần tử theo cột */
+  justify-content: center;                 /* Căn giữa theo chiều dọc */
+  align-items: center;                     /* Căn giữa theo chiều ngang */
+  gap: 12px;                               /* Khoảng cách giữa các phần tử */
+  font-size: 22px;                         /* Cỡ chữ 22px */
+}
+
+/* Lớp dùng để ẩn phần tử */
+.hidden { display: none !important; }      /* !important để luôn ưu tiên ẩn */
